@@ -1,0 +1,14 @@
+import Svg, { Path } from 'react-native-svg';
+
+const WeatherRain = () => {
+  return(
+    <Svg width="120" height="120" viewBox="0 0 50 50" fill="none">
+      <Path d="M25 25H10V30H25V25ZM40 25H25V30H40V25ZM45 20C45 22.7615 42.7615 25 40 25V30C45.5228 30 50 25.5228 50 20H45ZM40 15C42.7615 15 45 17.2386 45 20H50C50 14.4771 45.5228 10 40 10V15ZM38.6907 8.86335C36.348 3.6436 31.1023 0 25 0V5C29.0617 5 32.5632 7.42178 34.129 10.9107L38.6907 8.86335ZM25 0C18.8978 0 13.652 3.6436 11.3093 8.86335L15.871 10.9107C17.4368 7.42178 20.9383 5 25 5V0ZM10 10C4.47715 10 0 14.4771 0 20H5C5 17.2386 7.23857 15 10 15V10ZM0 20C0 25.5228 4.47715 30 10 30V25C7.23857 25 5 22.7615 5 20H0ZM11.3093 8.86335C10.9223 9.72565 10.3233 10 10 10V15C12.8768 15 14.9476 12.968 15.871 10.9107L11.3093 8.86335ZM40 10C39.6768 10 39.0777 9.72565 38.6907 8.86335L34.129 10.9107C35.0525 12.968 37.1233 15 40 15V10Z" fill="black" strokeWidth="2" strokeLinejoin="round"/>
+      <Path d="M25 42.5V37.5" stroke="black" strokeWidth="3" strokeLinejoin="round"/>
+      <Path d="M37.5 45V37.5" stroke="black" strokeWidth="3" strokeLinejoin="round"/>
+      <Path d="M12.5 47.5V37.5" stroke="black" strokeWidth="3" strokeLinejoin="round"/>
+    </Svg>
+  )
+}
+
+export default WeatherRain
