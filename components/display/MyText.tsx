@@ -4,10 +4,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'
 import { COLOR } from "@/utils/constants";
 
-interface MyTextProps {
-  children: ReactNode;
-  style?: string;
-}
+import { Geoname, MyTextProps } from '@/utils/types';
 
 const MyText: React.FC<MyTextProps> = ({ children, style }) => {
 

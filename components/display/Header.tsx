@@ -3,10 +3,7 @@ import { ReactNode } from 'react';
 import { View, StyleSheet, Text, Platform } from 'react-native';
 import SettingsIcon from '@/assets/icons/SettingsIcon';
 
-interface HeaderProps {
-  heading?: string,
-}
-export default function Header({heading}: HeaderProps) {
+export default function Header({heading} : {heading: string}) {
 
   return (
     <Text style={styles.container}>

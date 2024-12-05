@@ -1,6 +1,6 @@
 import { View, StyleSheet, Text } from 'react-native';
 import MyText from './MyText';
-import TempInFahrenheit from '@/assets/icons/TempInFahrenheit';
+import TempertureUnit from '@/assets/icons/TemperatureUnit';
 import WeatherWidget from './WeatherWidget';
 
 export default function WeatherHeader() {
@@ -12,7 +12,7 @@ export default function WeatherHeader() {
         <WeatherWidget weather='sunny' />
         <View style={styles.weatherValue}>
           <Text style={styles.text}>9</Text>
-          <TempInFahrenheit />
+          <TempertureUnit unit='c' />
         </View>
       </View>
     </View>

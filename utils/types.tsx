@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface Geoname {
   adminCode1: string;
   lng: string;
@@ -32,4 +34,9 @@ export interface WeatherWidgetProps {
 
 export interface AdditionalDataListProps {
   additionalData: { name: string; value: string }[];
+}
+
+export interface MyTextProps {
+  children: ReactNode;
+  style?: string;
 }
