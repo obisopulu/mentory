@@ -1,20 +1,26 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import "expo-dev-client";
+import "react-native-reanimated";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { useEffect } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Stack, Slot } from "expo-router";
+import { useFonts } from "expo-font";
+import { StatusBar } from "expo-status-bar";
+import * as SplashScreen from "expo-splash-screen";
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
   const [loaded] = useFonts({
+    'interBlack': require('@/assets/font/interBlack.ttf'),
     'interBold': require('@/assets/font/interBold.ttf'),
+    'interExtraBold': require('@/assets/font/interExtraBold.ttf'),
+    'interExtraLight': require('@/assets/font/interExtraLight.ttf'),
+    'interThin': require('@/assets/font/interThin.ttf'),
+    'interSemiBold': require('@/assets/font/interSemiBold.ttf'),
+    'interRegular': require('@/assets/font/interRegular.ttf'),
+    'interMedium': require('@/assets/font/interMedium.ttf'),
+    'interLight': require('@/assets/font/interLight.ttf')
   });
 
   useEffect(() => {
@@ -29,15 +35,12 @@ export default function RootLayout() {
 
   return (
     <>
-    {/* <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}> */}
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="details" options={{ headerShown: false }} />
-        <Stack.Screen name="settings" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" options={{ headerShown: false }} />
-      </Stack>
-      <StatusBar style="auto" />
-    {/* </ThemeProvider> */}
-    </>
-  );
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+      <StatusBar style="dark" />
+    </>
+  );
 }

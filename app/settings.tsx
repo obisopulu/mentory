@@ -1,22 +1,12 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import Header from '@/components/display/Header';
+import Settings from '@/components/display/Settings';
+import { StyleSheet, Image, Platform, Text, View } from 'react-native';
 
 export default function TabTwoScreen() {
   return (
-    <>
-      xxx
-    </>
+    <View>
+      <Header heading='Settings' />
+      <Settings />
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-});

@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactElement, ReactNode, useEffect } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'
@@ -11,32 +11,7 @@ interface MyTextProps {
 
 const MyText: React.FC<MyTextProps> = ({ children, style }) => {
 
-  const [fontsLoaded] = useFonts({
-    'interBlack': require('@/assets/font/interBlack.ttf'),
-    'interBold': require('@/assets/font/interBold.ttf'),
-    'interExtraBold': require('@/assets/font/interExtraBold.ttf'),
-    'interExtraLight': require('@/assets/font/interExtraLight.ttf'),
-    'interThin': require('@/assets/font/interThin.ttf'),
-    'interSemiBold': require('@/assets/font/interSemiBold.ttf'),
-    'interRegular': require('@/assets/font/interRegular.ttf'),
-    'interMedium': require('@/assets/font/interMedium.ttf'),
-    'interLight': require('@/assets/font/interLight.ttf')
-  })
-
-  useEffect(() => {
-    const prepare = async (): Promise<void> => {
-      await SplashScreen.preventAutoHideAsync()
-    }
-
-    prepare()
-  }, [])
-
-  if(!fontsLoaded){
-    return undefined
-  }else{
-    SplashScreen.hideAsync()
-  }
-  let content;
+  let content:ReactElement;
   
   switch (style) {
     case 'xl':

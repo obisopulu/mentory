@@ -1,41 +1,27 @@
 import TempInCelsius from '@/assets/icons/TempInCelsius';
 import MyText from '@/components/display/MyText';
-import WeatherWidget from '@/components/display/WeatherWidget';
-import TextInput from '@/components/input/TextInput';
-import { Image, StyleSheet, Platform } from 'react-native';
+import WeatherHeader from '@/components/display/WeatherHeader';
+import SettingsButton from '@/components/display/SettingsButton';
+import Details from '@/components/display/DetailsButton';
+import TextInput from '@/components/input/MyTextInput';
+import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Link } from 'expo-router';
+import Header from '@/components/display/Header';
 
 export default function HomeScreen() {
   return (
-    <>
-      <TextInput />
-      <div style={styles.weatherHeader}>
-        <WeatherWidget weather='sunny' />
-        <div style={styles.weatherValue}>
-          <MyText style='xl'>9</MyText>
-          <TempInCelsius />
-        </div>
-      </div>
-    </>
+    <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1 }}
+    >
+      <ScrollView>
+        <SettingsButton />
+        <Header heading='Weather' />
+        <WeatherHeader />
+        <TextInput />
+        <Details />
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  weatherHeader: {
-    marginTop: 50,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: 120,
-    padding: 30,
-  },
-  weatherValue: {
-    display: 'flex',
-    gap: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    height: 120,
-    padding: 30,
-  },
-});
