@@ -11,17 +11,12 @@ import Header from '@/components/display/Header';
 
 export default function HomeScreen() {
   return (
-    <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{ flex: 1 }}
-    >
-      <ScrollView>
-        <SettingsButton />
-        <Header heading='Weather' />
-        <WeatherHeader />
-        <TextInput />
-        <Details />
-      </ScrollView>
-    </KeyboardAvoidingView>
+    <ScrollView>
+      <SettingsButton />
+      <Header heading='Weather' />
+      <WeatherHeader />
+      <TextInput />
+      <Details />
+    </ScrollView>
   );
 }

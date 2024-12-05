@@ -4,7 +4,6 @@ import { View, StyleSheet, Platform, Text, Pressable } from 'react-native';
 
 export default function DetailsButton() {
 
-  
   return (
     <View style={styles.container}>
       <Pressable

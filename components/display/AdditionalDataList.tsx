@@ -5,13 +5,10 @@ import SettingsIcon from '@/assets/icons/SettingsIcon';
 import { COLOR } from '@/utils/constants';
 import AdditionalData from './AdditionalData';
 
-interface AdditionalDataListProps {
-  additionalData: { name: string; value: string }[];
-}
+import { AdditionalDataListProps } from '@/utils/types';
 
 export default function AdditionalDataList({additionalData}: AdditionalDataListProps) {
 
-  
   return (
     <View style={styles.container}>
       {additionalData.map((item, index) => (

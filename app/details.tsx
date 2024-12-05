@@ -1,6 +1,6 @@
 import Header from '@/components/display/Header';
 import WeatherHeader from '@/components/display/WeatherHeader';
-import { StyleSheet, Image, Platform, View } from 'react-native';
+import { StyleSheet, Image, ScrollView, View } from 'react-native';
 import SettingsButton from '@/components/display/SettingsButton';
 import AdditionalDataList from '@/components/display/AdditionalDataList';
 
@@ -13,12 +13,12 @@ export default function TabTwoScreen() {
   ]
 
   return (
-    <View>
+    <ScrollView>
       <SettingsButton />
       <Header heading='Details' />
       <WeatherHeader />
       <AdditionalDataList additionalData={additionalData} />
-    </View>
+    </ScrollView>
   );
 }
 

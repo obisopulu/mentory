@@ -5,7 +5,6 @@ import SettingsIcon from '@/assets/icons/SettingsIcon';
 
 export default function SettingsButton() {
 
-  
   return (
     <Link style={styles.button} href={'/settings'}>
       <SettingsIcon />

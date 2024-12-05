@@ -6,7 +6,6 @@ import Toggle from './Toggle';
 
 export default function Settings() {
 
-  
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Unit of measurement</Text>

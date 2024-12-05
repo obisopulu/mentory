@@ -6,9 +6,7 @@ import WeatherPartlyCloudy from "@/assets/icons/WeatherPartlyCloudy";
 import WeatherRain from "@/assets/icons/WeatherRain";
 import WeatherFog from "@/assets/icons/WeatherFog";
 
-interface WeatherWidgetProps {
-  weather: string
-}
+import { WeatherWidgetProps } from '@/utils/types';
 
 const WeatherWidget = ({ weather }: WeatherWidgetProps) => {
   let content;
@@ -47,6 +45,7 @@ const WeatherWidget = ({ weather }: WeatherWidgetProps) => {
       alignItems: 'flex-start',
       width: '50%',
       padding: 30,
+      paddingTop: 0,
     },
   });
 
