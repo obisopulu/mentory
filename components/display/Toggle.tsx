@@ -1,35 +1,34 @@
-import { useState } from 'react';
-import { View, StyleSheet, Platform, Text, Pressable } from 'react-native';
+import { useAppContext } from '@/context/AppContext';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 
 export default function Toggle() {
-  const [toggleValue, setToggleValue] = useState<string>('c');
-
-  
+  const {context, updateUnit} = useAppContext()
+    
   return (
     <View style={styles.container}>
     <Pressable
       style={({ pressed }) => [
-        [styles.button, styles.left, styles.selected],
+        [styles.button, styles.left, context.unit == 'c' && styles.selected],
         {
           opacity: pressed ? 0.5 : 1,
           elevation: pressed ? 2 : 4,
         },
       ]} 
-      onPress={() => alert('Pressable Pressed!')}
+      onPress={() => updateUnit('c')}
     >
-     <Text style={[styles.text, styles.selected]}>&#8451;</Text>
+     <Text style={[styles.text, context.unit == 'c' && styles.selected]}>&#8451;</Text>
     </Pressable>
     <Pressable
       style={({ pressed }) => [
-        [styles.button, styles.right],
+        [styles.button, styles.right, context.unit == 'f' && styles.selected],
         {
           opacity: pressed ? 0.5 : 1,
           elevation: pressed ? 2 : 4,
         },
       ]} 
-      onPress={() => alert('Pressable Pressed!')}
+      onPress={() => updateUnit('f')}
     >
-     <Text style={[styles.text]}>&#8457;</Text>
+     <Text style={[styles.text, context.unit == 'f' && styles.selected]}>&#8457;</Text>
     </Pressable>
    </View>
   );
@@ -38,14 +37,14 @@ export default function Toggle() {
 const styles = StyleSheet.create({
   container: {
     width: '60%', 
-    backgroundColor: '#ddd', 
+    backgroundColor: '#EEE', 
     borderRadius: 12, 
     marginHorizontal: 30,
     display: 'flex', 
     flexDirection: 'row', 
     alignContent: 'stretch',
     borderWidth: 1,
-    borderColor: '#AAA'
+    borderColor: '#CCCCCC'
   },
   button: {
     width: '50%', 
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 12,
   },
   selected: {
-    backgroundColor: '#FF3333',
+    backgroundColor: '#144884',
     color: 'white'
   }
 });

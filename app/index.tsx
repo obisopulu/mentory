@@ -1,32 +1,22 @@
-import MyText from '@/components/display/MyText';
 import WeatherHeader from '@/components/display/WeatherHeader';
 import SettingsButton from '@/components/display/SettingsButton';
-import MyTextInput from '@/components/input/MyTextInput';
+import InputPanel from '@/components/input/InputPanel';
 import Details from '@/components/display/DetailsButton';
-import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { Link } from 'expo-router';
+import { ScrollView } from 'react-native';
 import Header from '@/components/display/Header';
-import { useEffect, useState } from 'react';
 
-import * as Location from 'expo-location';
+import { useEffect } from 'react';
+import { getDeviceLocation } from '@/utils/getDeviceLocation';
+import { useAppContext } from '@/context/AppContext';
+import FooterIcon from '@/assets/icons/FooterIcon';
 
 export default function HomeScreen() {
-  const [permissionGranted, setPermissionGranted] = useState(false);
-
-  const getGPS = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
-    if (status === 'granted') {
-      let location = await Location.getCurrentPositionAsync();      
-      return {lat: location?.coords.latitude, lng: location?.coords.longitude}
-    }
-    return null
-  }
+  const {context, updateWeatherInfo} = useAppContext()
 
   useEffect(()=>{
     ( async () => {
-      const gpsData = await getGPS()
-      gpsData && setPermissionGranted(true)  
+      const gpsData = await getDeviceLocation()
+      gpsData && updateWeatherInfo(gpsData.lat, gpsData.lng)
     })()
   }, [])
 
@@ -34,9 +24,10 @@ export default function HomeScreen() {
     <ScrollView>
       <SettingsButton />
       <Header heading='Weather' />
-      <WeatherHeader />
-      <MyTextInput />
+      <WeatherHeader city={context.city} temperature={context.temperature} unit={context.unit} weather={context.weather} />
+      <InputPanel />
       <Details />
+      <FooterIcon />
     </ScrollView>
   );
 }

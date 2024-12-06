@@ -1,36 +1,30 @@
 import Header from '@/components/display/Header';
 import WeatherHeader from '@/components/display/WeatherHeader';
-import { StyleSheet, Image, ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import SettingsButton from '@/components/display/SettingsButton';
 import AdditionalDataList from '@/components/display/AdditionalDataList';
+import { useAppContext } from '@/context/AppContext';
+import { formatWeatherData } from '@/utils/getWeatherInfo';
 
 
-export default function TabTwoScreen() {
-  const additionalData = [
-    { 'name': 'Humidity', 'value': '20%' },
-    { 'name': 'Wind Speed', 'value': '120 km/h' },
-    { 'name': 'Sunset7 Sunrise', 'value': '10AM - 6PM' },
-  ]
+export default function DetailsScreen() {
+  const {context} = useAppContext()
 
+  const weatherData = {
+    main: { humidity: context.humidity },
+    wind: { speed: context.wind_speed },
+    visibility: context.visibility,
+    sys: { sunriseSunset: context.sunriseSunset}
+  }
+
+  const additionalData = formatWeatherData(weatherData);
+  
   return (
     <ScrollView>
       <SettingsButton />
       <Header heading='Details' />
-      <WeatherHeader />
+      <WeatherHeader city={context.city} temperature={context.temperature} unit={context.unit} weather={context.weather} />
       <AdditionalDataList additionalData={additionalData} />
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  headerImage: {
-    color: '#808080',
-    bottom: -90,
-    left: -35,
-    position: 'absolute',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
-});

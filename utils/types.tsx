@@ -29,11 +29,11 @@ export interface TransformedData {
 };
 
 export interface WeatherWidgetProps {
-  weather: string
+  weather?: string
 }
 
 export interface AdditionalDataListProps {
-  additionalData: { name: string; value: string }[];
+  additionalData: { name: string; value: string | number }[];
 }
 
 export interface MyTextProps {

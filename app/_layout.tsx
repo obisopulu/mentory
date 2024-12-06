@@ -7,6 +7,8 @@ import { Stack, Slot } from "expo-router";
 import { useFonts } from "expo-font";
 import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
+import { AppProvider } from "@/context/AppContext";
+import FooterIcon from "@/assets/icons/FooterIcon";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,13 +36,13 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <AppProvider>
       <Stack
         screenOptions={{
           headerShown: false,
         }}
       />
       <StatusBar style="dark" />
-    </>
+    </AppProvider>
   );
 }

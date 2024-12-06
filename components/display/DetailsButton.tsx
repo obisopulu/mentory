@@ -1,6 +1,5 @@
 import { router } from 'expo-router';
-import { ReactNode } from 'react';
-import { View, StyleSheet, Platform, Text, Pressable } from 'react-native';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 
 export default function DetailsButton() {
 
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 30,
     paddingVertical: 10,
-    backgroundColor: '#008080',
+    backgroundColor: '#144884',
     borderRadius: 8,
   },
   text: {

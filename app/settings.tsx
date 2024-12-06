@@ -1,8 +1,8 @@
 import Header from '@/components/display/Header';
 import Settings from '@/components/display/Settings';
-import { StyleSheet, Image, Platform, Text, View } from 'react-native';
+import { View } from 'react-native';
 
-export default function TabTwoScreen() {
+export default function SettingsScreen() {
   return (
     <View>
       <Header heading='Settings' />

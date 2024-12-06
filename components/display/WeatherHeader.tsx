@@ -1,18 +1,24 @@
 import { View, StyleSheet, Text } from 'react-native';
-import MyText from './MyText';
 import TempertureUnit from '@/assets/icons/TemperatureUnit';
 import WeatherWidget from './WeatherWidget';
 
-export default function WeatherHeader() {
+interface WeatherHeaderProps {
+  city?: string;
+  weather?:'sunny' | 'snow' | 'cloudy' | 'rain' | 'fog';
+  temperature?: number;
+  unit?: 'c' | 'f';
+}
 
+export default function WeatherHeader(props: WeatherHeaderProps) {
+  
   return (
     <View>
-      <Text style={styles.city}>Chemnitz</Text>
+      <Text style={styles.city}>{props?.city || 'no data'}</Text> 
       <View style={styles.weatherHeader}>
-        <WeatherWidget weather='sunny' />
+        <WeatherWidget weather={props?.weather} />
         <View style={styles.weatherValue}>
-          <Text style={styles.text}>9</Text>
-          <TempertureUnit unit='c' />
+          <Text style={styles.text}>{props?.temperature || '0'}</Text>
+          <TempertureUnit unit={props?.unit || 'c'} />
         </View>
       </View>
     </View>
@@ -35,16 +41,17 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     padding: 30,
+    paddingLeft: 0,
     paddingTop: 0,
   },
   text: {
     fontFamily: 'interExtraLight',
-    fontSize: 108,
+    fontSize: 72,
   },
   city: {
     fontFamily: 'interExtraLight',
-    fontSize: 24,
+    fontSize: 18,
     paddingLeft: 60,
-    paddingBottom: 0,
+    paddingBottom: 10,
   },
 });

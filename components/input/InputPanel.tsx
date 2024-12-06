@@ -4,32 +4,48 @@ import * as Location from 'expo-location';
 import axios from 'axios';
 
 import { Geoname, TransformedData } from '@/utils/types';
+import { getWeatherInfo } from '@/utils/getWeatherInfo';
+import { getSuggestions } from '@/utils/getSuggestions';
+import { useAppContext } from '@/context/AppContext';
 type LatLong = {
   lat: number;
   long: number;
 };
 
-export default function MyTextInput() {
+export default function InputPanel() {
+  const {context, updateWeatherInfo} = useAppContext()
 
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const [address, setAddress] = useState<string | undefined>();
-  const [textInput, setTextInput] = useState<string>('');
-  const [weatherData, SetWeatherData] = useState<object | undefined>();
+  const [textInput, setTextInput] = useState<string | undefined>('');
   const [transformedData, setTransformedData] = useState<TransformedData[]>();
-  
-  const [tempLatLong, setTempLatLong] = useState<LatLong>({lat: 0, long: 0});
 
-  const handleOnChange = (newText: string) => {
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (transformedData && transformedData.length > 0) {
+      timer = setTimeout(() => {
+        setTransformedData([]);
+      }, 5000);
+    }
+
+    return () => clearTimeout(timer);
+  }, [transformedData]);
+
+
+  const handleOnChange = async (newText: string) => {
     setTextInput(newText)
-    getSuggestions(newText)
+    setTransformedData( await getSuggestions(newText, true))
+  }
+
+  const handleButtonClick = async () => {
+    const gpsData = await getSuggestions(textInput, false)
+    updateWeatherInfo(gpsData.lat, gpsData.lng)
   }
 
   return (
     <View style={styles.container}>
-      {transformedData && (
+      {transformedData && Array.isArray(transformedData) && (
         <View style={styles.suggestionsList}>
           { transformedData.map(( item, index ) => 
-            <Text key={index} style={styles.suggestion} onPress={(e) => getLocation(item.latitude, item.longitude, item.city + ', ' + item.country + '.')}>{item.city}, {item.country}</Text>
+            <Text key={index} style={styles.suggestion} onPress={(e) => {updateWeatherInfo(item.latitude, item.longitude); setTextInput(item.city + ', ' + item.country + '.')}}>{item.city}, {item.country}</Text>
           )}
         </View>
       )}
@@ -41,7 +57,7 @@ export default function MyTextInput() {
             elevation: pressed ? 2 : 4,
           },
         ]} 
-        onPress={() => getLocation(0, 0, '')}
+        onPress={() => {updateWeatherInfo(0, 0), setTextInput((context.city))}}
       >
         <Text style={styles.textLocation}>&#9737;</Text>
       </Pressable>
@@ -60,7 +76,7 @@ export default function MyTextInput() {
             elevation: pressed ? 2 : 4,
           },
         ]} 
-        onPress={() => getLocation(tempLatLong.lat, tempLatLong.long, textInput)}
+        onPress={handleButtonClick}
       >
         <Text style={styles.text}>&#10140;</Text>
       </Pressable>
@@ -70,7 +86,7 @@ export default function MyTextInput() {
 
 const styles = StyleSheet.create({
   textLocation: {
-    color:'#008080',
+    color:'#144884',
     fontSize: 24,
   },
   buttonLocation: {
@@ -79,6 +95,7 @@ const styles = StyleSheet.create({
   button: {
   },
   text: {
+    color:'#144884',
     width:30,
     fontSize: 24,
   },

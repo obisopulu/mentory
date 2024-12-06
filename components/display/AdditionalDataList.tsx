@@ -1,8 +1,4 @@
-import { Link } from 'expo-router';
-import { ReactNode } from 'react';
 import { View, StyleSheet, Platform, Text } from 'react-native';
-import SettingsIcon from '@/assets/icons/SettingsIcon';
-import { COLOR } from '@/utils/constants';
 import AdditionalData from './AdditionalData';
 
 import { AdditionalDataListProps } from '@/utils/types';

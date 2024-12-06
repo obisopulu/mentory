@@ -1,10 +1,7 @@
-import React, { ReactElement, ReactNode, useEffect } from 'react';
+import React, { ReactElement } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen'
-import { COLOR } from "@/utils/constants";
 
-import { Geoname, MyTextProps } from '@/utils/types';
+import { MyTextProps } from '@/utils/types';
 
 const MyText: React.FC<MyTextProps> = ({ children, style }) => {
 

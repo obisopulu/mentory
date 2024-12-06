@@ -1,12 +1,8 @@
-import { Link } from 'expo-router';
-import { ReactNode } from 'react';
-import { View, StyleSheet, Platform, Text } from 'react-native';
-import SettingsIcon from '@/assets/icons/SettingsIcon';
-import { COLOR } from '@/utils/constants';
+import { View, StyleSheet, Text } from 'react-native';
 
 interface AdditionalDataProps {
-  name: string;
-  value: string;
+  name?: string;
+  value?: string | number;
 }
 export default function AdditionalData({name, value}: AdditionalDataProps) {
 

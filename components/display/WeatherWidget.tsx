@@ -11,14 +11,11 @@ import { WeatherWidgetProps } from '@/utils/types';
 const WeatherWidget = ({ weather }: WeatherWidgetProps) => {
   let content;
   switch (weather) {
-    case 'fog':
+    case 'sunny':
       content = <WeatherSunny/>
       break;
     case 'snow':
       content = <WeatherSnow/>
-      break;
-    case 'partly cloudy':
-      content = <WeatherPartlyCloudy/>
       break;
     case 'rain':
       content = <WeatherRain/>
@@ -27,7 +24,7 @@ const WeatherWidget = ({ weather }: WeatherWidgetProps) => {
       content = <WeatherFog/>
       break;
     default:
-      content = <WeatherCloudy/>
+      content = <WeatherPartlyCloudy/>
       break;
   }
   return (
