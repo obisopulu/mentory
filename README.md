@@ -25,28 +25,26 @@ A cross-platform React Native app built with TypeScript to display real-time wea
 - Prevents app crashes for network or geolocation issues.
 
 ---
-
-## Technologies Used
-- **React Native** with TypeScript for the app.
-- **Redux Toolkit** for state management.
-- **AsyncStorage** for persistent state.
-- **Axios** for API integration.
-- **React Navigation** for seamless navigation.
-- **OpenWeatherMap API** for fetching weather data.
-
----
-
 ## Installation
 
 ### Prerequisites
 Ensure you have the following installed:
 - Node.js
 - npm or Yarn
-- React Native CLI or Expo CLI
+- Expo CLI
 - An OpenWeatherMap API key
+- A GeoNames Search Webservice username
 
 ### Steps
 1. Clone the repository:
    ```bash
    git clone https://github.com/obisopulu/mentory.git
    cd mentory
+   
+2. Install dependencies:
+   ```bash
+   npm i
+   
+2. Run App:
+   ```bash
+   npx expo start

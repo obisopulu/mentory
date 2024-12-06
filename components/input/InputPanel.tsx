@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { TextInput, StyleSheet, View, Pressable, Text, Platform, Button, Alert, FlatList } from 'react-native';
-import * as Location from 'expo-location';
-import axios from 'axios';
+import { TextInput, StyleSheet, View, Pressable, Text, Platform} from 'react-native';
 
-import { Geoname, TransformedData } from '@/utils/types';
-import { getWeatherInfo } from '@/utils/getWeatherInfo';
+import { TransformedData } from '@/utils/types';
 import { getSuggestions } from '@/utils/getSuggestions';
 import { useAppContext } from '@/context/AppContext';
-type LatLong = {
-  lat: number;
-  long: number;
-};
 
 export default function InputPanel() {
   const {context, updateWeatherInfo} = useAppContext()

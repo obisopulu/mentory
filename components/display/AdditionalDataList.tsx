@@ -16,6 +16,6 @@ export default function AdditionalDataList({additionalData}: AdditionalDataListP
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 500
+    marginBottom: 50
   },
 });

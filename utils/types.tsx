@@ -35,8 +35,3 @@ export interface WeatherWidgetProps {
 export interface AdditionalDataListProps {
   additionalData: { name: string; value: string | number }[];
 }
-
-export interface MyTextProps {
-  children: ReactNode;
-  style?: string;
-}

@@ -5,6 +5,7 @@ import SettingsButton from '@/components/display/SettingsButton';
 import AdditionalDataList from '@/components/display/AdditionalDataList';
 import { useAppContext } from '@/context/AppContext';
 import { formatWeatherData } from '@/utils/getWeatherInfo';
+import FooterIcon from '@/assets/icons/FooterIcon';
 
 
 export default function DetailsScreen() {
@@ -25,6 +26,7 @@ export default function DetailsScreen() {
       <Header heading='Details' />
       <WeatherHeader city={context.city} temperature={context.temperature} unit={context.unit} weather={context.weather} />
       <AdditionalDataList additionalData={additionalData} />
+      <FooterIcon />
     </ScrollView>
   );
 }
